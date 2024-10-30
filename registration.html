@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event Registration</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+    <body class="bg-yellow-500 flex items-center justify-center min-h-screen" >
+
+        <div class="bg-black p-10 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold text-center mb-6 text-yellow-600">Event Registration</h2>
+            
+            <form action="/src/register.java" method="GET">
+                <!-- Name Field -->
+                <div class="mb-4">
+                    <label for="first_name" class="block text-yellow-600">First Name</label>
+                    <input type="text" id="first_name" name="first_name" class="w-full px-4 py-2 border border-yellow-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="last_name" class="block text-yellow-600">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" class="w-full px-4 py-2 border border-yellow-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
+
+                <!-- Email Field -->
+                <div class="mb-4">
+                    <label for="email" class="block text-yellow-600">Email Address</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-yellow-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
+    
+                <!-- Phone Number Field -->
+                <div class="mb-4">
+                    <label for="phone" class="block text-yellow-600">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-yellow-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
+
+                <!--Other details field-->
+                <div class="mb-4">
+                    <label for="role" class="block text-yellow-600">Role</label>
+                    <input type="text" id="last_name" name="last_name" class="w-full px-4 py-2 border border-yellow-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
+    
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="w-full bg-yellow-600 text-white py-2 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">Register Now</button>
+                </div>
+            </form>
+        </div>
+    
+    </body>
+</html>
