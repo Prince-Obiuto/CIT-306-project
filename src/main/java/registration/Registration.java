@@ -1,13 +1,21 @@
 package registration;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.NanoHTTPD.Response.Status;
 
 public class Registration extends NanoHTTPD {
+	
+	private static final Logger logger = Logger.getLogger(Registration.class.getName());
         
     public Registration() throws IOException {
 		super(8080);
@@ -23,9 +31,9 @@ public class Registration extends NanoHTTPD {
     private static Connection connect() {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/event site", "root", "princeobiuto");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/attendees", "root", "princeobiuto");
         } catch (SQLException e) {
-            e.printStackTrace();
+        	logger.log(Level.SEVERE, "Database connection error: ", e);
         }
         return connection;
     }
@@ -40,62 +48,131 @@ public class Registration extends NanoHTTPD {
                 return true; // Attendee exists
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+        	logger.log(Level.SEVERE, "Existing user in Database error: ", e);
         }
         return false;
     }
 
     // Method to insert a new attendee
-    public static void insertAttendee(String firstName, String lastName, String email, String phone, String role) {
+    public static void insertAttendee(String firstName, String lastName, String email, String phone, String position) {
     	if (isAttendeeExists(email)) {
             System.out.println("Attendee already exists in the database.");
             return;
     	}
             
-        String sql = "INSERT INTO attendees (first_name, last_name, email, phone, role) " + "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO attendees (first_name, last_name, email, phone, position) " + "VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = connect(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, firstName);
             stmt.setString(2, lastName);
             stmt.setString(3, email);
             stmt.setString(4, phone);
-            stmt.setString(5, role);
+            stmt.setString(5, position);
 
             stmt.executeUpdate();
 
             System.out.println("Attendee submitted successfully.");
-            src.main.java.registration.SendEmail.createEmail(email, firstName, lastName);
+            SendEmail.createEmail(email, firstName, lastName);
         } catch (SQLException e) {
-            e.printStackTrace();
+        	logger.log(Level.SEVERE, "Inserting attendee error: ", e);
         }
+    }
+    
+    private String generate404Page() {
+        return "<!DOCTYPE html>" +
+               "<html lang=\"en\">" +
+               "<head>" +
+               "    <meta charset=\"UTF-8\">" +
+               "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+               "    <title>404 Not Found</title>" +
+               "    <link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\">" +
+               "</head>" +
+               "<body class=\"bg-yellow-500 flex items-center justify-center min-h-screen\">" +
+               "    <div class=\"bg-black p-8 rounded-lg shadow-lg w-full max-w-md text-center\">" +
+               "        <h2 class=\"text-2xl font-semibold text-yellow-600 mb-4\">404 Not Found</h2>" +
+               "        <p class=\"text-white-700 mb-6\">The page you are looking for does not exist.</p>" +
+               "        <a href=\"/index.html\" class=\"inline-block bg-yellow-600 text-black py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
+               "            Back to Home" +
+               "        </a>" +
+               "    </div>" +
+               "</body>" +
+               "</html>";
+    }
+    
+    private String generate400Page() {
+        return "<!DOCTYPE html>" +
+               "<html lang=\"en\">" +
+               "<head>" +
+               "    <meta charset=\"UTF-8\">" +
+               "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+               "    <title>400 Bad Request</title>" +
+               "    <link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\">" +
+               "</head>" +
+               "<body class=\"bg-yellow-500 flex items-center justify-center min-h-screen\">" +
+               "    <div class=\"bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center\">" +
+               "        <h2 class=\"text-2xl font-semibold text-yellow-600 mb-4\">400 Bad Request</h2>" +
+               "        <p class=\"text-gray-700 mb-6\">Your request could not be understood by the server.</p>" +
+               "        <a href=\"/index.html\" class=\"inline-block bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
+               "            Back to Home" +
+               "        </a>" +
+               "    </div>" +
+               "</body>" +
+               "</html>";
     }
     
     @Override
     public Response serve(IHTTPSession session) {
-    	if (session.getUri().equals("/Registration")) {
-    		String firstName = session.getParameters().getOrDefault("first_name", List.of("")).get(0);
+        System.out.println("Requested URI: " + session.getUri());
+        System.out.println("Request Method: " + session.getMethod());
+
+        if (session.getMethod() == Method.GET && session.getUri().equals("/Registration")) {
+            System.out.println("Matched /Registration endpoint");
+            
+            // Retrieve parameters
+        	String firstName = session.getParameters().getOrDefault("first_name", List.of("")).get(0);
             String lastName = session.getParameters().getOrDefault("last_name", List.of("")).get(0);
             String email = session.getParameters().getOrDefault("email", List.of("")).get(0);
             String phone = session.getParameters().getOrDefault("phone", List.of("")).get(0);
-            String role = session.getParameters().getOrDefault("role", List.of("")).get(0);
-            
-            // Insert into the database
-            insertAttendee(firstName, lastName, email, phone, role);
-
-            String confirmationPage = String.format("/confirmation.html?first_name=%s&last_name=%s", firstName, lastName);
-            Response response = NanoHTTPD.newFixedLengthResponse(Response.Status.REDIRECT, "text/html", "");
-            response.addHeader("Location", confirmationPage);  // Set the 'Location' header for redirection
-
-            return response;
-    	}
-    	return NanoHTTPD.newFixedLengthResponse(Status.NOT_FOUND, "text/plain", "404 Error \nNot Found");
+            String position = session.getParameters().getOrDefault("position", List.of("")).get(0);
+                
+            // Insert into the database if required parameters are provided
+            if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty()) {
+    	        insertAttendee(firstName, lastName, email, phone, position);
+    	
+    	        String confirmationMessage = String.format("<!DOCTYPE html>" +
+    	                    "<html lang=\"en\">" +
+    	                    "<head>" +
+    	                    "    <meta charset=\"UTF-8\">" +
+    	                    "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+    	                    "    <title>Registration Confirmation</title>" +
+    	                    "    <link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\">" +
+    	                    "</head>" +
+    	                    "<body class=\"bg-yellow-500 flex items-center justify-center min-h-screen\">" +
+    	                    "    <div class=\"bg-black p-8 rounded-lg shadow-lg w-full max-w-md text-center\">" +
+    	                    "        <h2 class=\"text-2xl font-semibold text-yellow-600 mb-4\">Thank You for Registering!</h2>" +
+    	                    "        <p class=\"text-white mb-6\">We have received your registration details. You will receive an email confirmation shortly.</p>" +
+    	                    "        <a href=\"/\" class=\"inline-block bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
+    	                    "            Back to Home" +
+    	                    "        </a>" +
+    	                    "    </div>" +
+    	                    "</body>" +
+    	                    "</html>"
+    	        );
+    	        return NanoHTTPD.newFixedLengthResponse(Response.Status.OK, "text/html", confirmationMessage);
+            }else {
+                // If parameters are missing, return an error message
+                return NanoHTTPD.newFixedLengthResponse(Status.BAD_REQUEST, "text/html", generate400Page());
+            }
+        }
+        System.out.println("URI not matched. Returning 404.");
+        return NanoHTTPD.newFixedLengthResponse(Status.NOT_FOUND, "text/html", generate404Page());
     }
 
     public static void main(String[] args) {
     	try {
     		new Registration();
     	} catch (IOException e) {
-    		e.printStackTrace();
+    		logger.log(Level.SEVERE, "Main method error: ", e);
     	}
     }
 }
