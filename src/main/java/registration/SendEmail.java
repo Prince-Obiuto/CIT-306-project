@@ -3,6 +3,8 @@ package registration;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -12,6 +14,8 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
 public class SendEmail {
+	
+	private static final Logger logger = Logger.getLogger(Registration.class.getName());
 
     private static Properties loadProperties() throws IOException {
         Properties props = new Properties();
@@ -25,7 +29,7 @@ public class SendEmail {
             try {
                 props = loadProperties();
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.log(Level.SEVERE, "Load properties error: ", e);
             }
         final String username = props.getProperty("email.username");
         final String password = props.getProperty("email.password");
@@ -36,6 +40,7 @@ public class SendEmail {
         props.put("mail.smtp.port", "587");
         
         Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
+            @Override
             protected jakarta.mail.PasswordAuthentication getPasswordAuthentication() {
                 return new jakarta.mail.PasswordAuthentication(username, password);
                 }
@@ -65,7 +70,7 @@ public class SendEmail {
                 Transport.send(message);
                 System.out.println("Email sent successfully to " + recipientEmail);
             } catch (MessagingException e) {
-                e.printStackTrace();
+                logger.log(Level.SEVERE, "Set and send message error: ", e);
                 throw new RuntimeException(e);
             } 
     }
