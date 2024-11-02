@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AdminFunctions",
+            "request": "launch",
+            "mainClass": "registration.AdminFunctions",
+            "projectName": "registration"
+        },
+        {
+            "type": "java",
             "name": "Registration",
             "request": "launch",
             "mainClass": "registration.Registration",

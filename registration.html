@@ -1,62 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Registration</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #1A1A1A; /* Consistent dark theme background */
-        }
-    </style>
-</head>
-<body class="flex items-center justify-center min-h-screen text-gray-300">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event Registration</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #1A1A1A; /* Consistent dark theme background */
+            }
+        </style>
+    </head>
+    <body class="flex items-center justify-center min-h-screen text-gray-300">
 
-    <!-- Registration Form Container -->
-    <div class="bg-black p-10 rounded-lg shadow-lg w-full max-w-md mx-4">
-        <h2 class="text-3xl font-bold text-center mb-8 text-yellow-500">Register for the Event</h2>
-        
-        <form action="http://localhost:8080/Registration" method="GET" class="space-y-6">
+        <!-- Registration Form Container -->
+        <div class="bg-black p-10 rounded-lg shadow-lg w-full max-w-md mx-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-yellow-500">Register for the Event</h2>
+            
+            <form action="http://localhost:8080/Registration" method="GET" class="space-y-6">
 
-            <!-- First Name Field -->
-            <div>
-                <label for="first_name" class="block text-yellow-500 font-semibold">First Name</label>
-                <input type="text" id="first_name" name="first_name" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-            </div>
+                <!-- First Name Field -->
+                <div>
+                    <label for="first_name" class="block text-yellow-500 font-semibold">First Name</label>
+                    <input type="text" id="first_name" name="first_name" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
 
-            <!-- Last Name Field -->
-            <div>
-                <label for="last_name" class="block text-yellow-500 font-semibold">Last Name</label>
-                <input type="text" id="last_name" name="last_name" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-            </div>
+                <!-- Last Name Field -->
+                <div>
+                    <label for="last_name" class="block text-yellow-500 font-semibold">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
 
-            <!-- Email Field -->
-            <div>
-                <label for="email" class="block text-yellow-500 font-semibold">Email Address</label>
-                <input type="email" id="email" name="email" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-            </div>
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-yellow-500 font-semibold">Email Address</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
 
-            <!-- Phone Number Field -->
-            <div>
-                <label for="phone" class="block text-yellow-500 font-semibold">Phone Number</label>
-                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-            </div>
+                <!-- Phone Number Field -->
+                <div>
+                    <label for="phone" class="block text-yellow-500 font-semibold">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
 
-            <!-- Position Field -->
-            <div>
-                <label for="position" class="block text-yellow-500 font-semibold">Position</label>
-                <input type="text" id="position" name="position" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-            </div>
+                <!-- Position Field -->
+                <div>
+                    <label for="position" class="block text-yellow-500 font-semibold">Position</label>
+                    <input type="text" id="position" name="position" class="w-full px-4 py-2 mt-2 bg-gray-800 border border-yellow-600 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                </div>
 
-            <!-- Submit Button -->
-            <div>
-                <button type="submit" class="w-full bg-yellow-500 text-black font-bold py-3 rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                    Register Now
-                </button>
-            </div>
-        </form>
-    </div>
-
-</body>
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit" class="w-full bg-yellow-500 text-black font-bold py-3 rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        Register Now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
