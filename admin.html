@@ -37,25 +37,36 @@
         </style>
         <script>
             async function fetchAttendees() {
-                const response = await fetch('http://localhost:8081/attendees');
-                const attendees = await response.json();
-                const tableBody = document.getElementById('attendeeTableBody');
-                tableBody.innerHTML = ''; // Clear any existing rows
+                try {
+                    const response = await fetch('http://localhost:8080/attendees');
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    const attendees = await response.json();
+                    console.log("Fetched attendees:", attendees); // Debugging: log the data to the console
 
-                attendees.forEach(attendee => {
-                    const row = document.createElement('tr');
-                    row.className = "table-row text-black"; // Add row styling
-                    row.innerHTML = `
-                        <td class="py-2 px-4 border">${attendee.id}</td>
-                        <td class="py-2 px-4 border">${attendee.first_name}</td>
-                        <td class="py-2 px-4 border">${attendee.last_name}</td>
-                        <td class="py-2 px-4 border">${attendee.email}</td>
-                        <td class="py-2 px-4 border">
-                            <button onclick="deleteAttendee(${attendee.id})" class="button-delete text-white px-3 py-1 rounded">Delete</button>
-                        </td>
-                    `;
-                    tableBody.appendChild(row);
-                });
+                    const tableBody = document.getElementById('attendeeTableBody');
+                    tableBody.innerHTML = ''; // Clear any existing rows
+
+                    attendees.forEach(attendee => {
+                        const row = document.createElement('tr');
+                        row.className = "table-row text-black"; // Add row styling
+                        row.innerHTML = `
+                            <td class="py-2 px-4 border">${attendee.id}</td>
+                            <td class="py-2 px-4 border">${attendee.first_name}</td>
+                            <td class="py-2 px-4 border">${attendee.last_name}</td>
+                            <td class="py-2 px-4 border">${attendee.email}</td>
+                            <td class="py-2 px-4 border">${attendee.phone}</td>
+                            <td class="py-2 px-4 border">${attendee.position}</td>
+                            <td class="py-2 px-4 border">${attendee.registered_on}</td>
+                            <td class="py-2 px-4 border">
+                                <button onclick="deleteAttendee(${attendee.id})" class="button-delete text-white px-3 py-1 rounded">Delete</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                }catch (error) {
+                    console.error("Error fetching attendees:", error);
             }
 
             async function deleteAttendee(id) {
@@ -63,6 +74,24 @@
                     await fetch(`http://localhost:8081/attendees?id=${id}`, { method: 'DELETE' });
                     fetchAttendees(); // Refresh the table
                 }
+            }
+
+            async function addAttendee(event) {
+                event.preventDefault();
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const position = document.getElementById('position').value;
+
+                await fetch('http://localhost:8080/attendees', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ first_name: firstName, last_name: lastName, email: email, phone: phone, position: position})
+                });
+
+                document.getElementById('addAttendeeForm').reset();
+                fetchAttendees(); // Refresh attendee list
             }
 
             // Call fetchAttendees on page load
@@ -83,6 +112,19 @@
             </div>
         </header>
 
+        <!-- Add Attendee Form -->
+        <h2 class="text-2xl font-bold text-header mb-6">Add New Attendee</h2>
+        <form id="addAttendeeForm" onsubmit="addAttendee(event)" class="mb-6">
+            <div class="flex flex-col space-y-4">
+                <input id="firstName" type="text" placeholder="First Name" class="py-2 px-4 border rounded" required>
+                <input id="lastName" type="text" placeholder="Last Name" class="py-2 px-4 border rounded" required>
+                <input id="email" type="email" placeholder="Email" class="py-2 px-4 border rounded" required>
+                <input id="phone" type="tel" placeholder="Phone" class="py-2 px-4 border rounded" required>
+                <input id="position" type="text" placeholder="Position" class="py-2 px-4 border rounded" required>
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded font-semibold hover:bg-green-600">Add Attendee</button>
+            </div>
+        </form>
+
         <!-- Attendees Table -->
         <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
             <h2 class="text-2xl font-bold text-header mb-6">Registered Attendees</h2>
@@ -93,6 +135,8 @@
                         <th class="py-2 px-4 border">First Name</th>
                         <th class="py-2 px-4 border">Last Name</th>
                         <th class="py-2 px-4 border">Email</th>
+                        <th class="py-2 px-4 border">Phone</th>
+                        <th class="py-2 px-4 border">Position</th>
                         <th class="py-2 px-4 border">Actions</th>
                     </tr>
                 </thead>
