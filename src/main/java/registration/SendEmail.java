@@ -15,7 +15,7 @@ import jakarta.mail.internet.MimeMessage;
 
 public class SendEmail {
 	
-	private static final Logger logger = Logger.getLogger(Registration.class.getName());
+	private static final Logger logger = Logger.getLogger(SendEmail.class.getName());
 
     /*private static Properties loadProperties() throws IOException {
         Properties props = new Properties();
