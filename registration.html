@@ -4,49 +4,30 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pre-Registration - Solar Tech Conference</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <style>
-            body {
-                background-color: #1A1A1A; /* Dark theme */
-            }
-
-            .pre-registration-bg {
-                background-image: url(''); /* Replace with your image path */
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                position: relative;
-            }
-
-            .pre-registration-bg .content {
-                position: relative;
-                z-index: 2;
-            }
-        </style>
+        <link rel="stylesheet" href="styles.css">
     </head>
-    <body class="text-gray-300">
+    <body>
 
         <!-- Header -->
-        <header class="bg-black p-6 flex justify-between items-center">
-            <h1 class="text-3xl font-bold flex items-center space-x-2">
-                <img src="logo-url.jpg" alt="Logo" class="w-10 h-10 rounded-full">
+        <header>
+            <h1>
+                <img src="image/logo 1.jpg" alt="Logo" class="logo">
                 <span>Solar Tech Conference</span>
             </h1>
         </header>
 
         <!-- Pre-Registration Info Section -->
-        <section class="pre-registration-bg text-black text-center py-16 px-6">
-            <div class="overlay"></div>
+        <section class="pre-registration-bg">
             <div class="content">
-                <h2 class="text-4xl font-bold">Registration Information</h2>
-                <p class="mt-4 max-w-2xl mx-auto">Thank you for your interest in the Solar Tech Conference. Please confirm your attendance by completing the registration form. Don’t miss out on exciting sessions and networking opportunities!</p>
+                <h2>Registration Information</h2>
+                <p>Thank you for your interest in the Solar Tech Conference. Please confirm your attendance by completing the registration form. Don’t miss out on exciting sessions and networking opportunities!</p>
             </div>
         </section>
 
         <!-- Event Highlights Section -->
-        <section class="bg-black text-yellow-500 py-16 px-6">
-            <h3 class="text-3xl font-bold text-center mb-6">Event Highlights</h3>
-            <ul class="max-w-2xl mx-auto list-disc list-inside space-y-2">
+        <section class="event-highlights">
+            <h3>Event Highlights</h3>
+            <ul>
                 <li>Workshops on cutting-edge solar technology.</li>
                 <li>Panel discussions with renewable energy experts.</li>
                 <li>Networking sessions with global professionals.</li>
@@ -54,19 +35,19 @@
             </ul>
         </section>
 
-        <section class="pre-registration-bg text-black text-center py-16 px-6">
-            <div class="overlay"></div>
+        <!-- Price Section -->
+        <section class="price-section">
             <div class="content">
-                <p class="mt-6 text-center items-center justify-center">
-                    <a class="inline-block bg-yellow-500 text-red-700 px-3 py-1 rounded font-semibold">Price: </a>
-                    <a class="inline-block bg-black text-gray-200 px-3 py-1 rounded font-semibold hover:bg-red-700">Free</a>
+                <p>
+                    <span class="price-label">Price:</span>
+                    <span class="price-value">Free</span>
                 </p>
-                <a href="registration-form.html" class="mt-6 inline-block bg-black text-yellow-500 px-8 py-3 rounded font-semibold hover:bg-yellow-900">Proceed to Registration</a>
+                <a href="registration-form.html" class="btn">Proceed to Registration</a>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="bg-black text-gray-400 py-10 text-center">
+        <footer>
             <p>&copy; 2024 Solar Tech Conference. All rights reserved.</p>
         </footer>
 
