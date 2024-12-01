@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5f932f36-ddaa-4119-b2b2-9e4d54e7b60d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webform 2/target/dependency/jakarta.activation-2.0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webform 2/target/dependency/jakarta.mail-2.0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webform 2/target/dependency/mysql-connector-j-8.0.33.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webform 2/target/dependency/nanohttpd-2.3.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webform 2/target/dependency/protobuf-java-3.21.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webform 2/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webform 2/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webform 2/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../webform 2/target/submit-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/registration/SendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/registration/SendEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webform 2/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webform 2/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webform 2/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/../webform 2/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webform 2/target/classes/submit/SendEmail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webform 2/target/classes/submit/SendEmail$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webform 2/target/classes/submit/SendEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webform 2/target/classes/submit/SendEmail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webform 2/target/classes/submit/Submit.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webform 2/target/classes/submit/Submit.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Prince-Obiuto&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Prince-Obiuto/CIT-306-project.git&quot;,
+    &quot;accountId&quot;: &quot;84382897-38d6-4eb0-b640-06fd38883bfc&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2oJJ8h0KAmfvYUt2Qp6ftO1l7Nn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AdminFunctions.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Registration.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HP/Desktop/Java Projects/web-form&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;
+  }
+}</component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\HP\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="96f784a0-bc8f-4319-9910-f63bf6bfa18a" reportId="CIT-306-project/qodana/2024-11-03" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="CIT-306-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="CIT-306-project" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5f932f36-ddaa-4119-b2b2-9e4d54e7b60d" name="Changes" comment="" />
+      <created>1730581608262</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730581608262</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
