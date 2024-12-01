@@ -1,0 +1,849 @@
+/* General Reset */
+body, h1, h2, h3, h4, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+}
+
+header h1 {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+header img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+header nav a {
+    background-color: #0011ff;
+    color: #fff;
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    color: #fff;
+    padding: 100px 20px;
+}
+
+.hero h2 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #070b0c;
+
+}
+
+.hero .btn {
+    background-color: #0011ff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.hero .btn:hover {
+    background-color: #0011ff;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 4rem 1rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+
+/* About Section */
+.about {
+    padding: 60px 20px;
+    text-align: center;
+    color: #000;
+}
+
+.about h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-content img {
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/* Features Section */
+.features {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.features h3 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+.feature-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.feature-item h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Schedule Section */
+.schedule {
+    padding: 60px 20px;
+    color: #fff;
+}
+
+.schedule h3 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+.schedule-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.day {
+    padding: 20px;
+    background-color: rgba(17, 17, 17, 0.8);
+    border-radius: 10px;
+}
+
+.day img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.day h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.day ul {
+    font-size: 16px;
+    color: #ddd;
+}
+
+/* Speakers Section */
+.speakers {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.speakers h3 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.speaker {
+    text-align: center;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+.speaker img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.speaker h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.speaker p {
+    font-size: 16px;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .speakers-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .speaker {
+        width: 90%;
+    }
+}
+
+
+/* Venue Section */
+.venue {
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.venue h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.venue-details {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    color: #000;
+}
+
+.venue img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/*register Section */
+ .register {
+    padding: 60px 20px;
+    text-align: center;
+    color: #000;
+}
+
+.register h3 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.register-details {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+.register p{
+    margin-bottom: 10px;
+    text-align: center;
+
+}
+.btn{
+    font-size: 1rem;
+    padding: 10px 20px;
+    text-align: center;
+    color: #fff;
+    background-color:  #0011ff;
+    border: 60px;
+    cursor: pointer;
+}
+.register img {
+    max-width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+/* contact Section */
+.contact {
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.contact h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color:#000;
+}
+
+.contact p {
+    color: #000;
+}
+
+.contact-details {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    color: #000;
+}
+
+.contact img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* General Reset for register form */
+body, h1, h2, p, form, label, input, select, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; 
+}
+
+header h1 {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+header .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Form Container */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: #0011ff;
+    outline: none;
+}
+
+button {
+    background-color: #0011ff;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0011ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+}
+
+
+
+/* General Reset */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+}
+
+header h1 {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+header img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* Pre-Registration Info Section */
+.pre-registration-bg {
+    background: url('images/registration-bg.jpg') no-repeat center center/cover;
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.pre-registration-bg .content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.pre-registration-bg h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.pre-registration-bg p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* Event Highlights Section */
+.event-highlights {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.event-highlights h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.event-highlights ul {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    list-style: disc;
+    padding-left: 40px;
+    color: #555;
+}
+
+.event-highlights li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Price Section */
+.price-section {
+    background: url('images/price-bg.jpg') no-repeat center center/cover;
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.price-section .content {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.price-section .price-label {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #0011ff;
+}
+
+.price-section .price-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.price-section .btn {
+    display: inline-block;
+    background-color: #0011ff;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.price-section .btn:hover {
+    background-color: #0011ff;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+/* General Reset */
+body, h1, h2, form, table, nav, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid;
+    
+} 
+
+header h1 {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+header .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a, header nav button {
+    background-color: #0011ff;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+header nav button:hover, header nav a:hover {
+    background-color: #0011ff;
+}
+
+/* Add Attendee Form */
+form {
+    background: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+form input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+form input:focus {
+    border-color: #0011ff;
+    outline: none;
+}
+
+form button {
+    background-color: #0011ff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0011ff;
+}
+
+/* Attendee Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+    background-color: #0011ff;
+    color: #fff;
+}
+
+table thead th {
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+table tbody td {
+    padding: 10px;
+    text-align: left;
+}
+
+table tbody button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+table tbody button:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+    }
+    header h1 {
+        font-size: 20px;
+    }
+
+    form div {
+        flex-direction: column;
+    }
+
+    form input {
+        width: 100%;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-item {
+        width: 90%;
+    }
+
+    .schedule-container {
+        flex-direction: column;
+    }
+
+    .schedule {
+        padding: 1rem;
+    }
+
+    .venue {
+        padding: 1rem;
+    }
+}
