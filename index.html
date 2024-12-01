@@ -1,126 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Event Registration</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <style>
-            body {
-                background-image: url(''); /* Replace with your image path */
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                color: #e0e0e0; /* Default text color */
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Tech Conference</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>
+            <img src="image/logo 1.jpg" alt="Logo">
+            <span>Solar Tech Conference</span>
+        </h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#speakers">Speakers</a>
+            <a href="#venue">Venue</a>
+            <a href="#register" class="button">Register</a>
+        </nav>
+    </header>
 
-            .bg-yellow-500 {
-                background-color: rgba(255, 255, 200, 0.5); /* Yellow with transparency */
-                /* Ensure text remains readable */
-                backdrop-filter: blur(3px); /* Optional blur effect for better readability */
-            }
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('image/image-asset.jpeg');">
+        <h2>Join the Solar Tech Revolution</h2>
+        <p>Innovate, connect, and explore the future of solar technology.</p>
+        <a href="registration.html" class="btn">Register Now</a>
+    </section>
 
-            .bg-black {
-                background-color: rgba(0, 0, 0, 0.8); /* Black with slight transparency */
-            }
-        </style>
-    </head>
-    <body>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h3>About the Conference</h3>
+        <div class="about-content">
+            <img src="image/renewable+energy.jpg" alt="About Solar Tech">
+            <p>The Solar Tech Conference brings industry experts and enthusiasts together to explore advancements in solar technology.</p>
+        </div>
+    </section>
 
-        <!-- Header -->
-        <header class="bg-black p-6 flex justify-between items-center">
-            <h1 class="text-3xl font-bold flex items-center space-x-2">
-                <img src="assets/logo-url.jpg" alt="Logo" class="w-10 h-10 rounded-full">
-                <span>Solar Tech Conference</span>
-            </h1>
-            <nav class="space-x-10 text-white">
-                <a href="#about" class="hover:text-yellow-500">About</a>
-                <a href="#features" class="hover:text-yellow-500">Features</a>
-                <a href="#speakers" class="hover:text-yellow-500">Speakers</a>
-                <a href="#schedule" class="hover:text-yellow-500">Schedule</a>
-                <a href="#contact" class="hover:text-yellow-500">Contact</a>
-                <a href="#register" class="mt-2 inline-block bg-yellow-600 text-black-500 px-3 py-2 rounded font-semibold hover:bg-yellow-600">Register</a>
-            </nav>
-        </header>
-
-        <!-- Hero Section -->
-        <section class="bg-yellow-500 text-black py-20 px-6">
-            <h2 class="text-5xl font-bold">Join the Solar Tech Revolution</h2>
-            <p class="mt-4 text-lg">Innovate, connect, and explore the future of solar technology.</p>
-            <a href="registration.html" class="mt-6 inline-block bg-black text-yellow-600 px-8 py-3 rounded font-semibold hover:bg-yellow-800">Register Now</a>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="bg-black text-gray-300 py-16 px-6">
-            <h3 class="text-3xl font-bold text-center mb-4">About the Conference</h3>
-            <p class="max-w-3xl mx-auto text-center">The Solar Tech Conference brings industry experts and enthusiasts together to explore advancements in solar technology.</p>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="bg-yellow-500 text-black py-16 px-6">
-            <h3 class="text-3xl font-bold text-center mb-4">Event Features</h3>
-            <div class="flex flex-wrap justify-center space-y-6 md:space-y-0 md:space-x-10">
-                <div class="w-full md:w-1/3 bg-black text-gray-300 p-6 rounded-lg shadow-lg">
-                    <h4 class="text-xl font-semibold">Global Speakers</h4>
-                    <p>Top industry experts from around the world share their insights on solar advancements.</p>
-                </div>
-                <div class="w-full md:w-1/3 bg-black text-gray-300 p-6 rounded-lg shadow-lg">
-                    <h4 class="text-xl font-semibold">Networking Opportunities</h4>
-                    <p>Connect with professionals and enthusiasts in the solar energy space.</p>
-                </div>
-                <div class="w-full md:w-1/3 bg-black text-gray-300 p-6 rounded-lg shadow-lg">
-                    <h4 class="text-xl font-semibold">Innovative Technology</h4>
-                    <p>Get a first look at the latest technology transforming the solar industry.</p>
-                </div>
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h3>Event Features</h3>
+        <div class="features-grid">
+            <div class="feature-item">
+                <img src="image/speakers solar.png" alt="Global Speakers">
+                <h4>Global Speakers</h4>
+                <p>Top industry experts from around the world share their insights on solar advancements.</p>
             </div>
-        </section>
-
-        <!-- Speakers Section -->
-        <section id="speakers" class="bg-black text-gray-300 py-16 px-6">
-            <h3 class="text-3xl font-bold text-center mb-8">Meet Our Speakers</h3>
-            <div class="flex flex-wrap justify-center space-y-8 md:space-y-0 md:space-x-10">
-                <div class="w-full md:w-1/3 text-center">
-                    <img src="speaker1.jpg" alt="Speaker 1" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h4 class="text-xl font-semibold">Speaker 1</h4>
-                    <p>Renewable Energy Expert</p>
-                </div>
-                <div class="w-full md:w-1/3 text-center">
-                    <img src="speaker2.jpg" alt="Speaker 2" class="w-32 h-32 rounded-full mx-auto mb-4">
-                    <h4 class="text-xl font-semibold">Speaker 2</h4>
-                    <p>Solar Policy Advocate</p>
-                </div>
+            <div class="feature-item">
+                <img src="image/solar 3.jpg" alt="Networking">
+                <h4>Networking Opportunities</h4>
+                <p>Connect with professionals and enthusiasts in the solar energy space.</p>
             </div>
-        </section>
+            <div class="feature-item">
+                <img src="image/solar 4.jpg" alt="Innovation">
+                <h4>Innovative Technology</h4>
+                <p>Get a first look at the latest technology transforming the solar industry.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- Schedule Section -->
-        <section id="schedule" class="bg-yellow-500 text-black py-16 px-6">
-            <h3 class="text-3xl font-bold text-center mb-4">Conference Schedule</h3>
-            <p class="max-w-3xl mx-auto text-center">Check back soon for our detailed schedule of events!</p>
-            <!-- You can add the schedule details here -->
-        </section>
+    <!-- Conference Schedule Section -->
+    <section id="schedule" class="schedule">
+        <h3>Conference Schedule</h3>
+        <div class="schedule-container">
+            <div class="day">
+                <h4>Day 1: September 25, 2024</h4>
+                <img src="image/solar-tech-bg.jpg" alt="Day 1 Schedule">
+                <ul>
+                    <li><strong>09:00 AM:</strong> Registration & Welcome Coffee</li>
+                    <li><strong>10:00 AM:</strong> Opening Keynote by Dr. Jane Smith</li>
+                    <li><strong>11:15 AM:</strong> Panel Discussion: Future of Solar Energy</li>
+                </ul>
+            </div>
+            <div class="day">
+                <h4>Day 2: September 26, 2024</h4>
+                <img src="image/solar2-tech-bg.jpg" alt="Day 2 Schedule">
+                <ul>
+                    <li><strong>09:00 AM:</strong> Breakfast & Networking</li>
+                    <li><strong>10:15 AM:</strong> Seminar: Renewable Energy Policies</li>
+                    <li><strong>11:45 AM:</strong> Workshop: Designing Efficient Solar Systems</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        <!-- Register Section -->
-        <section id="register" class="bg-black text-gray-300 py-16 px-6">
-            <h3 class="text-3xl font-bold text-center mb-4">Register for the Conference</h3>
-            <p class="max-w-3xl mx-auto text-center">Secure your spot at the Solar Tech Conference!</p>
-            <p class="mt-2 mx-auto font-semibold text-center hover:text-yellow-500"><a href="registration.html">Click to Register Now!</a></p>
-        </section>
+    <!-- Speakers Section -->
+    <section id="speakers" class="speakers">
+        <h3>Meet Our Speakers</h3>
+        <div class="speakers-grid">
+            <div class="speaker">
+                <img src="image/EventSpeaker5.jpg" alt="Dr. Jane Smith">
+                <h4>Dr. Jane Smith</h4>
+                <p>Topic: Innovations in Solar Energy</p>
+            </div>
+            <div class="speaker">
+                <img src="image/EventSpeaker6.jpg" alt="Prof. John Doe">
+                <h4>Prof. John Doe</h4>
+                <p>Topic: The Future of Sustainable Tech</p>
+            </div>
+            <div class="speaker">
+                <img src="image/EventSpeaker2.jpg" alt="Ms. Angela Lee">
+                <h4>Ms. Angela Lee</h4>
+                <p>Topic: Solar-Powered Smart Cities</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="bg-yellow-500 text-black py-16 px-6">
-            <h3 class="text-3xl font-bold mb-4">Contact Us</h3>
-            <p class="max-w-3xl mx-auto font-bold">For inquiries, reach us at:</p>
-            <p class="text-center"><a href="mailto:princeamam9gmail.com" class="hover:text-yellow-600">princeamam9gmail.com</a></p>
-            <p class="text-center flex items-center justify-center">
-                <img src="/assets/Icons-2.svg" alt="phone" class="w-10 h-10 rounded-full ml-2">
-                +2349162578016
-            </p>
+    <!-- Venue Section -->
+    <section id="venue" class="venue">
+        <h3>Conference Venue</h3>
+        <div class="venue-details">
+            <img src="image/venue.jpg" alt="Conference Venue">
+            <h4>FUTO Senate Building</h4>
+            <p>Solar Tech Conference Center</p>
+            <p>Federal University of Technology, Owerri, Imo State, Nigeria ·</p>
+        </div>
+    </section>
 
-        </section>
+    <!-- Register Section -->
+    <section id="register" class="register">
+        <h3>Register for the Conference</h3>
+        <div class="register-details">
+            <img src="image/join.jpg" alt="Register">
+            <p>Secure your spot at the Solar Tech Conference!</p>
+            <p><a href="registration.html" class="btn">Click to Register Now!</a></p>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="bg-black text-gray-400 py-10 text-center">
-            <p>&copy; 2024 Solar Tech Conference. All rights reserved.</p>
-        </footer>
-    </body>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h3>Contact Us</h3>
+        <div class="contact-details"></div>
+        <!-- <img src="image/contact us.jpg" alt="Contact Us"> -->
+        <p>For inquiries, reach us at:</p>
+        <p><a href="mailto:princeamam9@gmail.com">princeamam9@gmail.com</a></p>
+        <p>+2349162578016</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Solar Tech Conference. All rights reserved.</p>
+    </footer>
+</body>
 </html>
+
+
