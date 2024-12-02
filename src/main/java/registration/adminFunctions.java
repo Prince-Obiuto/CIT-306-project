@@ -1,23 +1,43 @@
 package registration;
 
 import com.google.gson.Gson;
+
 import fi.iki.elonen.NanoHTTPD;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.*;
 
-public class AdminFunctions extends NanoHTTPD {
+public class adminFunctions extends NanoHTTPD {
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/attendees";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "princeobiuto";
+    private static Properties loadProperties() {
+        Properties props = new Properties();
+        try {
+            FileInputStream fileInput = new FileInputStream("src/main/java/registration/config.properties");
+            props.load(fileInput);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Configuration File error", e);
+        }
+        return props;
+    }
+
+    /*Properties props = null;
+        try {*/
+        Properties props = loadProperties();
+    /*} catch (IOException e) {
+        logger.log(Level.SEVERE, "Load properties error: ", e);
+    }*/
+
+    private final String JDBC_URL = props.getProperty("sql.JDBC_URL");
+    private final String DB_USER = props.getProperty("sql.JDBC_USER");
+    private final String DB_PASSWORD = props.getProperty("sql.JDBC_PASSWORD");
     private static final Gson gson = new Gson();
-    private static final Logger logger = Logger.getLogger(Registration.class.getName());
+    private static final Logger logger = Logger.getLogger(adminFunctions.class.getName());
 
-    public AdminFunctions() throws IOException {
+    public adminFunctions() throws IOException {
         super(8081);
         try {
             start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
@@ -44,6 +64,8 @@ public class AdminFunctions extends NanoHTTPD {
                 // Handle preflight request for CORS
                 try (Response response = newFixedLengthResponse(Response.Status.OK, "text/plain", "")) {
                     return addCorsHeaders(response);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
 
@@ -56,7 +78,11 @@ public class AdminFunctions extends NanoHTTPD {
                     return addCorsHeaders(newFixedLengthResponse(Response.Status.OK, "application/json", "{\"status\":\"deleted\"}"));
                 } else if (Method.POST.equals(method)) {
                     Map<String, String> params = new HashMap<>();
-                    session.parseBody(params);
+                    try {
+                        session.parseBody(params);
+                    } catch (IOException | ResponseException e) {
+                        throw new RuntimeException(e);
+                    }
                     Map<String, String> requestBody = gson.fromJson(params.get("postData"), Map.class);
 
                     //String id = requestBody.get("id");
@@ -74,12 +100,12 @@ public class AdminFunctions extends NanoHTTPD {
                     return addCorsHeaders(newFixedLengthResponse(Response.Status.OK, "application/json", "{\"status\":\"added\"}"));
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error handling request: ", e);
             return addCorsHeaders(newFixedLengthResponse(Response.Status.INTERNAL_ERROR, "application/json", "{\"error\":\"Server error\"}"));
         }
 
-        return addCorsHeaders(newFixedLengthResponse(Response.Status.NOT_FOUND, "application/json", "{\"error\":\"Not Found\"}"));
+        return addCorsHeaders (newFixedLengthResponse(Response.Status.NOT_FOUND, "application/json", "{\"error\":\"Not Found\"}"));
     }
 
 
@@ -125,7 +151,7 @@ public class AdminFunctions extends NanoHTTPD {
 
     public static void main(String[] args) {
         try {
-            new AdminFunctions();
+            new adminFunctions();
         } catch (IOException e) {
             System.err.println("Couldn't start server:\n" + e);
         }

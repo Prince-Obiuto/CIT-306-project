@@ -1,5 +1,6 @@
 package registration;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,11 +29,33 @@ public class Registration extends NanoHTTPD {
         super(port);
     }
 
+    public static Properties loadProperties() {
+        Properties props = new Properties();
+        try {
+            FileInputStream fileInput = new FileInputStream("src/main/java/registration/config.properties");
+            props.load(fileInput);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Configuration File error", e);
+        }
+        return props;
+    }
+
     // Method to establish a connection to the database
     private static Connection connect() {
+        Properties props = loadProperties();
+        /*try {
+            props = loadProperties();
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Load properties error: ", e);
+        }*/
+
+        final String JDBC_URL = props.getProperty("sql.JDBC_URL");
+        final String JDBC_USER = props.getProperty("sql.JDBC_USER");
+        final String JDBC_PASSWORD = props.getProperty("sql.JDBC_PASSWORD");
+
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/attendees", "root", "princeobiuto");
+            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Database connection error: ", e);
         }
@@ -54,7 +78,7 @@ public class Registration extends NanoHTTPD {
     }
 
     private String AttendeeExistsPage(String firstName, String lastName) {
-        return "<!DOCTYPE html>" +
+        String message = "<!DOCTYPE html>" +
                 "<html lang=\"en\">" +
                 "<head>" +
                 "    <meta charset=\"UTF-8\">" +
@@ -72,6 +96,7 @@ public class Registration extends NanoHTTPD {
                 "    </div>" +
                 "</body>" +
                 "</html>";
+        return message;
     }
 
     // Method to insert a new attendee
@@ -104,7 +129,7 @@ public class Registration extends NanoHTTPD {
     }
 
     private String error404Page() {
-        return "<!DOCTYPE html>" +
+        String message = "<!DOCTYPE html>" +
                 "<html lang=\"en\">" +
                 "<head>" +
                 "    <meta charset=\"UTF-8\">" +
@@ -122,10 +147,11 @@ public class Registration extends NanoHTTPD {
                 "    </div>" +
                 "</body>" +
                 "</html>";
+        return message;
     }
 
     private String error400Page() {
-        return "<!DOCTYPE html>" +
+        String message = "<!DOCTYPE html>" +
                 "<html lang=\"en\">" +
                 "<head>" +
                 "    <meta charset=\"UTF-8\">" +
@@ -143,10 +169,11 @@ public class Registration extends NanoHTTPD {
                 "    </div>" +
                 "</body>" +
                 "</html>";
+        return message;
     }
 
     private String confirmationMessage() {
-        return "<!DOCTYPE html>" +
+        String message = "<!DOCTYPE html>" +
                 "<html lang=\"en\">" +
                 "<head>" +
                 "    <meta charset=\"UTF-8\">" +
@@ -164,6 +191,7 @@ public class Registration extends NanoHTTPD {
                 "    </div>" +
                 "</body>" +
                 "</html>";
+        return message;
     }
 
     @Override
@@ -175,11 +203,11 @@ public class Registration extends NanoHTTPD {
             System.out.println("Matched /Registration endpoint");
 
             // Retrieve parameters
-            String firstName = session.getParameters().getOrDefault("first_name", List.of("")).get(0);
-            String lastName = session.getParameters().getOrDefault("last_name", List.of("")).get(0);
-            String email = session.getParameters().getOrDefault("email", List.of("")).get(0);
-            String phone = session.getParameters().getOrDefault("phone", List.of("")).get(0);
-            String position = session.getParameters().getOrDefault("position", List.of("")).get(0);
+            String firstName = session.getParameters().getOrDefault("first_name", List.of("")).getFirst();
+            String lastName = session.getParameters().getOrDefault("last_name", List.of("")).getFirst();
+            String email = session.getParameters().getOrDefault("email", List.of("")).getFirst();
+            String phone = session.getParameters().getOrDefault("phone", List.of("")).getFirst();
+            String position = session.getParameters().getOrDefault("position", List.of("")).getFirst();
 
             // Insert into the database if required parameters are provided
             if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty()) {

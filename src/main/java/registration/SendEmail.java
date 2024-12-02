@@ -1,5 +1,7 @@
 package registration;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,24 +17,28 @@ public class SendEmail {
 	
 	private static final Logger logger = Logger.getLogger(SendEmail.class.getName());
 
-    /*private static Properties loadProperties() throws IOException {
+    private static Properties loadProperties() {
         Properties props = new Properties();
-        FileInputStream fileInput = new FileInputStream("config.properties");
-        props.load(fileInput);
+        try {
+            FileInputStream fileInput = new FileInputStream("src/main/java/registration/config.properties");
+            props.load(fileInput);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Configuration File error", e);
+        }
         return props;
-    }*/
+    }
     
     public static void createEmail(String recipientEmail, String firstName, String lastName) {
-    	Properties props = new Properties(); //null;
+    	Properties props = loadProperties();
+
         /*try {
             props = loadProperties();
         } catch (IOException e) {
         logger.log(Level.SEVERE, "Load properties error: ", e);
         }*/
-        final String username = "princeamam9@gmail.com";
-        //props.getProperty("email.username");
-        final String password = "osmz rafm oeab pbms";
-        //props.getProperty("email.password");
+
+        final String username = props.getProperty("email.username");
+        final String password = props.getProperty("email.password");
 
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");

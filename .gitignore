@@ -1,5 +1,5 @@
-/Registeration.class
-/.project
-/config.properties
-/SendEmail.class
-/bin/
+target\classes\Registeration.class
+.project
+src\main\java\registeration\config.properties
+target\classes\SendEmail.class
+bin
