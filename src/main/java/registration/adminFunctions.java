@@ -90,9 +90,9 @@ public class adminFunctions extends NanoHTTPD {
                     String lastName = requestBody.get("last_name");
                     String email = requestBody.get("email");
                     String phone = requestBody.get("phone");
-                    String position = requestBody.get("position");
+                    String positions = requestBody.get("positions");
 
-                    addAttendee(firstName, lastName, email, phone, position);
+                    addAttendee(firstName, lastName, email, phone, positions);
 
                     // Trigger email after successful addition
                     SendEmail.createEmail(email, firstName, lastName);
@@ -104,7 +104,6 @@ public class adminFunctions extends NanoHTTPD {
             logger.log(Level.SEVERE, "Error handling request: ", e);
             return addCorsHeaders(newFixedLengthResponse(Response.Status.INTERNAL_ERROR, "application/json", "{\"error\":\"Server error\"}"));
         }
-
         return addCorsHeaders (newFixedLengthResponse(Response.Status.NOT_FOUND, "application/json", "{\"error\":\"Not Found\"}"));
     }
 
@@ -121,7 +120,7 @@ public class adminFunctions extends NanoHTTPD {
                 attendee.put("last_name", result.getString("last_name"));
                 attendee.put("email", result.getString("email"));
                 attendee.put("phone", result.getString("phone"));
-                attendee.put("position", result.getString("position"));
+                attendee.put("positions", result.getString("positions"));
                 attendee.put("registered_on", result.getString("registered_on"));
                 attendees.add(attendee);
             }
@@ -137,14 +136,14 @@ public class adminFunctions extends NanoHTTPD {
         }
     }
 
-    private void addAttendee(String firstName, String lastName, String email, String phone, String position) throws SQLException {
+    private void addAttendee(String firstName, String lastName, String email, String phone, String positions) throws SQLException {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
-             PreparedStatement statement = conn.prepareStatement("INSERT INTO attendees (first_name, last_name, email, phone, position) VALUES (?, ?, ?, ?, ?)")) {
+             PreparedStatement statement = conn.prepareStatement("INSERT INTO attendees (first_name, last_name, email, phone, positions) VALUES (?, ?, ?, ?, ?)")) {
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, email);
             statement.setString(4, phone);
-            statement.setString(5, position);
+            statement.setString(5, positions);
             statement.executeUpdate();
         }
     }

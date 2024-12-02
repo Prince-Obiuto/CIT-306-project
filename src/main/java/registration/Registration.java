@@ -43,11 +43,6 @@ public class Registration extends NanoHTTPD {
     // Method to establish a connection to the database
     private static Connection connect() {
         Properties props = loadProperties();
-        /*try {
-            props = loadProperties();
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Load properties error: ", e);
-        }*/
 
         final String JDBC_URL = props.getProperty("sql.JDBC_URL");
         final String JDBC_USER = props.getProperty("sql.JDBC_USER");
@@ -100,20 +95,20 @@ public class Registration extends NanoHTTPD {
     }
 
     // Method to insert a new attendee
-    public Response insertAttendee(String firstName, String lastName, String email, String phone, String position) {
+    public Response insertAttendee(String firstName, String lastName, String email, String phone, String positions) {
         if (isAttendeeExists(email)) {
             System.out.println("Attendee already exists in the database.");
             return NanoHTTPD.newFixedLengthResponse(Response.Status.OK, "text/html", AttendeeExistsPage(firstName, lastName));
         }
 
-        String sql = "INSERT INTO attendees (first_name, last_name, email, phone, position) " + "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO attendees (first_name, last_name, email, phone, positions) " + "VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = connect(); PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, email);
             statement.setString(4, phone);
-            statement.setString(5, position);
+            statement.setString(5, positions);
 
             statement.executeUpdate();
 
@@ -207,11 +202,11 @@ public class Registration extends NanoHTTPD {
             String lastName = session.getParameters().getOrDefault("last_name", List.of("")).getFirst();
             String email = session.getParameters().getOrDefault("email", List.of("")).getFirst();
             String phone = session.getParameters().getOrDefault("phone", List.of("")).getFirst();
-            String position = session.getParameters().getOrDefault("position", List.of("")).getFirst();
+            String positions = session.getParameters().getOrDefault("positions", List.of("")).getFirst();
 
             // Insert into the database if required parameters are provided
             if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty()) {
-                return insertAttendee(firstName, lastName, email, phone, position);
+                return insertAttendee(firstName, lastName, email, phone, positions);
             } else {
                 // If parameters are missing, return an error message
                 return NanoHTTPD.newFixedLengthResponse(Status.BAD_REQUEST, "text/html", error400Page());

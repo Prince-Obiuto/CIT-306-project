@@ -17,10 +17,12 @@
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/registration/AdminFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/registration/adminFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/registration-form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/registration/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/registration/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/registration/SendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/registration/SendEmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/registration/adminFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/registration/adminFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/registration/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/registration/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/registration/Registration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/registration/Registration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/registration/adminFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/registration/adminFunctions.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../webform 2/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../webform 2/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../webform 2/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/../webform 2/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../webform 2/target/classes/submit/SendEmail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webform 2/target/classes/submit/SendEmail$1.class" afterDir="false" />
@@ -69,7 +71,7 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.AdminFunctions.executor": "Run",
     "Application.Registration.executor": "Run",
-    "Application.adminFunctions.executor": "Run",
+    "Application.adminFunctions.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
@@ -130,5 +132,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLException" package="java.sql" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -24,7 +24,7 @@
                         <td>${attendee.last_name}</td>
                         <td>${attendee.email}</td>
                         <td>${attendee.phone}</td>
-                        <td>${attendee.position}</td>
+                        <td>${attendee.positions}</td>
                         <td>
                             <button onclick="deleteAttendee(${attendee.id})">Delete</button>
                         </td>
@@ -49,12 +49,12 @@
             const lastName = document.getElementById('lastName').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
-            const position = document.getElementById('position').value;
+            const positions = document.getElementById('positions').value;
 
             await fetch('http://localhost:8081/attendees', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ first_name: firstName, last_name: lastName, email: email, phone: phone, position: position })
+                body: JSON.stringify({ first_name: firstName, last_name: lastName, email: email, phone: phone, positions: positions })
             });
 
             document.getElementById('addAttendeeForm').reset();
@@ -88,7 +88,7 @@
             <input id="lastName" type="text" placeholder="Last Name" required>
             <input id="email" type="email" placeholder="Email" required>
             <input id="phone" type="tel" placeholder="Phone" required>
-            <input id="position" type="text" placeholder="Position" required>
+            <input id="positions" type="text" placeholder="positions" required>
             <button type="submit">Add Attendee</button>
         </div>
     </form>
