@@ -58,9 +58,23 @@
 
             <!-- Submit Button -->
             <div class="form-group">
-                <button type="submit">Register Now</button>
+                <button type="submit" onclick="handleSubmit()">Register Now</button>
             </div>
         </form>
     </section>
+
+    <script>
+        function handleSubmit() {
+            const firstName = document.getElementById("first_name").value;
+            const lastName = document.getElementById("last_name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+
+            if (!firstName|| !lastName || !email || !phone) {
+                alert("Please fill out all required fields!");
+                return;
+        }
+    </script>
+
 </body>
 </html>

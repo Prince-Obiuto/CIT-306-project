@@ -44,9 +44,12 @@ public class Registration extends NanoHTTPD {
     private static Connection connect() {
         Properties props = loadProperties();
 
-        final String JDBC_URL = props.getProperty("sql.JDBC_URL");
-        final String JDBC_USER = props.getProperty("sql.JDBC_USER");
-        final String JDBC_PASSWORD = props.getProperty("sql.JDBC_PASSWORD");
+        String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/defaultdb";
+                //props.getProperty("sql.JDBC_URL");
+        String JDBC_USER = "root";
+                //props.getProperty("sql.JDBC_USER");
+        String JDBC_PASSWORD = "princeobiuto";
+                //props.getProperty("sql.JDBC_PASSWORD");
 
         Connection connection = null;
         try {
@@ -59,7 +62,7 @@ public class Registration extends NanoHTTPD {
 
     // Method to check if record exists
     public static boolean isAttendeeExists(String email) {
-        String sql = "SELECT COUNT(*) FROM attendees WHERE email = ?";
+        String sql = "SELECT COUNT(*) FROM attendee WHERE email = ?";
         try (Connection conn = connect(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
@@ -85,7 +88,7 @@ public class Registration extends NanoHTTPD {
                 "    <div class=\"bg-black p-8 rounded-lg shadow-lg w-full max-w-md text-center\">" +
                 "        <h2 class=\"text-2xl font-semibold text-yellow-600 mb-4\">Attendee Already Registered</h2>" +
                 "        <p class=\"text-white mb-6\">Hello " + firstName + " " + lastName + ", you are already registered with us.</p>" +
-                "        <a href=\"/\" class=\"inline-block bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
+                "        <a href=\"/CIT-306-project/index.html\" class=\"inline-block bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
                 "            Back to Home" +
                 "        </a>" +
                 "    </div>" +
@@ -101,7 +104,7 @@ public class Registration extends NanoHTTPD {
             return NanoHTTPD.newFixedLengthResponse(Response.Status.OK, "text/html", AttendeeExistsPage(firstName, lastName));
         }
 
-        String sql = "INSERT INTO attendees (first_name, last_name, email, phone, positions) " + "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO attendee (first_name, last_name, email, phone, positions) " + "VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = connect(); PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, firstName);
@@ -113,7 +116,7 @@ public class Registration extends NanoHTTPD {
             statement.executeUpdate();
 
             System.out.println("Attendee submitted successfully.");
-            SendEmail.createEmail(email, firstName, lastName);
+            //SendEmail.createEmail(email, firstName, lastName);
 
             return NanoHTTPD.newFixedLengthResponse(Response.Status.OK, "text/html", confirmationMessage());
 
@@ -136,7 +139,7 @@ public class Registration extends NanoHTTPD {
                 "    <div class=\"bg-black p-8 rounded-lg shadow-lg w-full max-w-md text-center\">" +
                 "        <h2 class=\"text-2xl font-semibold text-yellow-600 mb-4\">404 Not Found</h2>" +
                 "        <p class=\"text-white-700 mb-6\">The page you are looking for does not exist.</p>" +
-                "        <a href=\"/index.html\" class=\"inline-block bg-yellow-600 text-black py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
+                "        <a href=\"CIT-306-project/index.html\" class=\"inline-block bg-yellow-600 text-black py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
                 "            Back to Home" +
                 "        </a>" +
                 "    </div>" +
@@ -158,7 +161,7 @@ public class Registration extends NanoHTTPD {
                 "    <div class=\"bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center\">" +
                 "        <h2 class=\"text-2xl font-semibold text-yellow-600 mb-4\">400 Bad Request</h2>" +
                 "        <p class=\"text-gray-700 mb-6\">Your request could not be understood by the server.</p>" +
-                "        <a href=\"/index.html\" class=\"inline-block bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
+                "        <a href=\"CIT-306-project/index.html\" class=\"inline-block bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
                 "            Back to Home" +
                 "        </a>" +
                 "    </div>" +
@@ -180,7 +183,7 @@ public class Registration extends NanoHTTPD {
                 "    <div class=\"bg-black p-8 rounded-lg shadow-lg w-full max-w-md text-center\">" +
                 "        <h2 class=\"text-2xl font-semibold text-yellow-600 mb-4\">Thank You for Registering!</h2>" +
                 "        <p class=\"text-white mb-6\">We have received your registration details. You will receive an email confirmation shortly.</p>" +
-                "        <a href=\"/\" class=\"inline-block bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
+                "        <a href=\"/CIT-306-project/index.html\" class=\"inline-block bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500\">" +
                 "            Back to Home" +
                 "        </a>" +
                 "    </div>" +

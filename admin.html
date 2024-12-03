@@ -9,7 +9,7 @@
     <script>
         async function fetchAttendees() {
             try {
-                const response = await fetch('http://localhost:8081/attendees');
+                const response = await fetch('http://localhost:8081/attendee');
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
@@ -38,7 +38,7 @@
 
         async function deleteAttendee(id) {
             if (confirm("Are you sure you want to delete this attendee?")) {
-                await fetch(`http://localhost:8081/attendees?id=${id}`, { method: 'DELETE' });
+                await fetch(`http://localhost:8081/attendee?id=${id}`, { method: 'DELETE' });
                 fetchAttendees();
             }
         }
@@ -51,7 +51,7 @@
             const phone = document.getElementById('phone').value;
             const positions = document.getElementById('positions').value;
 
-            await fetch('http://localhost:8081/attendees', {
+            await fetch('http://localhost:8081/attendee', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ first_name: firstName, last_name: lastName, email: email, phone: phone, positions: positions })

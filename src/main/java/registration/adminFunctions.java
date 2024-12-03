@@ -31,9 +31,12 @@ public class adminFunctions extends NanoHTTPD {
         logger.log(Level.SEVERE, "Load properties error: ", e);
     }*/
 
-    private final String JDBC_URL = props.getProperty("sql.JDBC_URL");
-    private final String DB_USER = props.getProperty("sql.JDBC_USER");
-    private final String DB_PASSWORD = props.getProperty("sql.JDBC_PASSWORD");
+    String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/defaultdb";
+    //props.getProperty("sql.JDBC_URL");
+    String DB_USER = "root";
+    //props.getProperty("sql.JDBC_USER");
+    String DB_PASSWORD = "princeobiuto";
+    //props.getProperty("sql.JDBC_PASSWORD");
     private static final Gson gson = new Gson();
     private static final Logger logger = Logger.getLogger(adminFunctions.class.getName());
 
@@ -69,7 +72,7 @@ public class adminFunctions extends NanoHTTPD {
                 }
             }
 
-            if ("/attendees".equalsIgnoreCase(uri)) {
+            if ("/attendee".equalsIgnoreCase(uri)) {
                 if (Method.GET.equals(method)) {
                     return addCorsHeaders(newFixedLengthResponse(Response.Status.OK, "application/json", getAttendees()));
                 } else if (Method.DELETE.equals(method) && session.getParameters().containsKey("id")) {
@@ -95,7 +98,7 @@ public class adminFunctions extends NanoHTTPD {
                     addAttendee(firstName, lastName, email, phone, positions);
 
                     // Trigger email after successful addition
-                    SendEmail.createEmail(email, firstName, lastName);
+                    //SendEmail.createEmail(email, firstName, lastName);
 
                     return addCorsHeaders(newFixedLengthResponse(Response.Status.OK, "application/json", "{\"status\":\"added\"}"));
                 }
@@ -112,7 +115,7 @@ public class adminFunctions extends NanoHTTPD {
         List<Map<String, Object>> attendees = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
              Statement statement = conn.createStatement();
-             ResultSet result = statement.executeQuery("SELECT * FROM attendees")) {
+             ResultSet result = statement.executeQuery("SELECT * FROM attendee")) {
             while (result.next()) {
                 Map<String, Object> attendee = new HashMap<>();
                 attendee.put("id", result.getInt("id"));
@@ -130,7 +133,7 @@ public class adminFunctions extends NanoHTTPD {
 
     private void deleteAttendee(int id) throws SQLException {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
-             PreparedStatement statement = conn.prepareStatement("DELETE FROM attendees WHERE id = ?")) {
+             PreparedStatement statement = conn.prepareStatement("DELETE FROM attendee WHERE id = ?")) {
             statement.setInt(1, id);
             statement.executeUpdate();
         }
@@ -138,7 +141,7 @@ public class adminFunctions extends NanoHTTPD {
 
     private void addAttendee(String firstName, String lastName, String email, String phone, String positions) throws SQLException {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
-             PreparedStatement statement = conn.prepareStatement("INSERT INTO attendees (first_name, last_name, email, phone, positions) VALUES (?, ?, ?, ?, ?)")) {
+             PreparedStatement statement = conn.prepareStatement("INSERT INTO attendee (first_name, last_name, email, phone, positions) VALUES (?, ?, ?, ?, ?)")) {
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, email);
